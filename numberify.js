@@ -1,26 +1,37 @@
 "use strict";
 
-function numberify(option,number){
-  if(number < 100){
-    if(number < 10){
-      number = "00" + number
+function numberify(option){
+  if(option.number < 100){
+    if(option.number < 10){
+      option.number = "00" + option.number
     }else{
-      number = "0" + number
+      option.number = "0" + option.number
     }
-    return number
+    return option.number
   }
-  if(option == "tech"){
-    number += 500;
-    if(number > 1000){
-      number -= 1000;
+  if(option.case == "tech"){
+    option.number += 500;
+    if(option.number > 1000){
+      option.number -= 1000;
+      if(option.number < 10){
+        option.number = "00" + option.number;
+        return option.number;
+      }else if(option.number <100){
+        option.number = "0" + option.number;
+      }else if(
+        option.number = option.number + ""
+      ){
+        return option.number
+      }
     }
-    return number
-  }else if(option == "admin"){
-    number += 100;
-  }if(number > 1000){
-    number -= 1000;
+    return option.number
+  }else if(option.case == "admin"){
+    option.number += 100;
+  }if(option.number > 1000){
+    option.number -= 1000;
+    option.number = "number";
   }
-  return number
+  return option.number
 }
 
 
