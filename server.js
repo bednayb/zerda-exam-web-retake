@@ -23,6 +23,8 @@ var con = mysql.createConnection({
   });
 // MYSQL
 
+
+
 app.use(bodyParser.json());
 app.use(express.static('client'));
 
@@ -38,7 +40,10 @@ app.post('/turnomatic', function (req, res) {
     "message": "server error, please find a member of staff to get your number"
   }
 }
-
+// put data to sql
+  con.query('INSERT INTO cases (case_type) VALUES(?)', [req.body.case], function(err, rows) {
+      if (err) throw err;
+  });
 
   // Send back
   var responseFromTheServer = data;
