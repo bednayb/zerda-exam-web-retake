@@ -7,8 +7,10 @@ var hoodie = document.querySelector('#HoodieOptions');
 var select = document.querySelector('#select');
 var ul = document.querySelector('#result');
 
+
 button.addEventListener('click', function () {
-  console.log(select.value);
+
+  button.innerText = "loading";
   var xhr = new XMLHttpRequest();
   xhr.open('POST', 'http://localhost:3000/turnomatic');
   xhr.setRequestHeader('Content-Type', 'application/json');
@@ -17,8 +19,9 @@ button.addEventListener('click', function () {
   };
   xhr.onreadystatechange = function () {
     if(xhr.readyState === XMLHttpRequest.DONE) {
+      button.innerText = "get another number";
       var li = document.createElement('li');
-      li.innerText = xhr.responseText;
+      li.innerText = "Your number is " + xhr.responseText;
       ul.appendChild(li);
     }
   };
