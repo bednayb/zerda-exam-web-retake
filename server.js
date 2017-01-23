@@ -6,11 +6,39 @@ var mysql = require('mysql');
 var validator = require('./numberify.js');
 var app = express();
 
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "'root'",
+  password: "admin",
+  database: "jsretake"
+});
+
+// ***** CHECK the MYSQL Connection *****
+  con.connect(function(err){
+  if(err){
+  console.log("Error connecting to Db", err);
+  return;
+  }
+  console.log("Connection established");
+  });
+// MYSQL
+
 app.use(bodyParser.json());
 app.use(express.static('client'));
 
 app.post('/turnomatic', function (req, res) {
-  var data = req.body.case;
+  if(true){
+  var data = {
+    "status":"ok",
+    "number":req.body.case
+  };
+}else{
+  data ={
+    "status": "error",
+    "message": "server error, please find a member of staff to get your number"
+  }
+}
+
 
   // Send back
   var responseFromTheServer = data;
