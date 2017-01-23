@@ -10,8 +10,12 @@ app.use(bodyParser.json());
 app.use(express.static('client'));
 
 app.post('/turnomatic', function (req, res) {
-  var options = req.body.case;
+  var data = req.body.case;
 
+  // Send back
+  var responseFromTheServer = data;
+  res.status(200).send(JSON.stringify(responseFromTheServer));
+});
 
 
 
