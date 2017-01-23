@@ -13,7 +13,7 @@ button.addEventListener('click', function () {
   xhr.open('POST', 'http://localhost:3000/turnomatic');
   xhr.setRequestHeader('Content-Type', 'application/json');
   var DataFromTheClient = {
-      "case": "hoodie"
+      case: "hoodie"
   };
     xhr.send(JSON.stringify(DataFromTheClient));
 
