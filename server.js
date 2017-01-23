@@ -40,7 +40,7 @@ app.post('/turnomatic', function (req, res) {
   if(true){
   var data = {
     "status":"ok",
-    "number":numbercases
+    "number":numbercases + ""
   }
 }else{
   data ={
