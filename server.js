@@ -29,25 +29,31 @@ app.use(bodyParser.json());
 app.use(express.static('client'));
 
 app.post('/turnomatic', function (req, res) {
+
+  // put data to sql
+    con.query('INSERT INTO cases (case_type) VALUES(?)', [req.body.case], function(err, rows) {
+      var numbercases = rows.insertId;
+        if (err) throw err;
+
+
+
   if(true){
   var data = {
     "status":"ok",
-    "number":req.body.case
-  };
+    "number":numbercases
+  }
 }else{
   data ={
     "status": "error",
     "message": "server error, please find a member of staff to get your number"
   }
 }
-// put data to sql
-  con.query('INSERT INTO cases (case_type) VALUES(?)', [req.body.case], function(err, rows) {
-      if (err) throw err;
-  });
 
   // Send back
+  console.log(data);
   var responseFromTheServer = data;
-  res.status(200).send(JSON.stringify(responseFromTheServer));
+  res.status(200).send(JSON.stringify(numbercases));
+    });
 });
 
 
